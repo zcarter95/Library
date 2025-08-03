@@ -4,9 +4,20 @@ if (document.readyState == 'loading') {
     ready()
 }
 
+
 function ready() {
+    let removeBookButtons = document.getElementsByClassName("remove");
+    for (var i = 0; i < removeBookButtons.length; i++) {
+        let button = removeBookButtons[i];
+        button.addEventListener('click', removeBook);
+    }
     updateLibrary();
     addBook();
+}
+
+function removeBook(event) {
+    var buttonClicked = event.target;
+    buttonClicked.parentElement.remove();
 }
 
 function addBook() {
@@ -49,6 +60,7 @@ function updateLibrary() {
             `
         card.innerHTML = cardContents;
         content.append(card);
+        card.getElementsByClassName("remove")[0].addEventListener('click', removeBook);
     });
 }
 const myLibrary = [];
