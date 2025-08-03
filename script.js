@@ -36,6 +36,9 @@ function addBook() {
         let formData = new FormData(submit);
         addBookToLibrary(Object.fromEntries(formData).book_title, Object.fromEntries(formData).book_author, Object.fromEntries(formData).book_pages, Object.fromEntries(formData).book_read);
         updateLibrary();
+        let form = document.getElementsByClassName('new-book-form')[0];
+        form.style.display = "none";
+        document.getElementsByClassName("new-book")[0].reset();
     })
 }
 function bringUpInput() {
