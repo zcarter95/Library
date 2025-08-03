@@ -12,6 +12,13 @@ function ready() {
 function addBook() {
     let add_book_button = document.getElementsByClassName('add-book')[0];
     add_book_button.addEventListener('click', bringUpInput)
+    let submit = document.getElementsByClassName('new-book')[0];
+    submit.addEventListener("submit", function(event) {
+        event.preventDefault();
+        let formData = new FormData(submit);
+        addBookToLibrary(Object.fromEntries(formData).book_title, Object.fromEntries(formData).book_author, Object.fromEntries(formData).book_pages, Object.fromEntries(formData).book_read);
+        updateLibrary();
+    })
 
 }
 function bringUpInput() {
@@ -56,6 +63,4 @@ function addBookToLibrary(name, author, pages, read) {
   myLibrary.push(new_book);
 }
 
-addBookToLibrary("The Way of Kings", "Brandon Sanderson", 1007, true);
-addBookToLibrary("Harry Potter and the Sorcer's Stone", "J.K. Rowling", 500, true);
 
