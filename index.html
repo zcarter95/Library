@@ -8,6 +8,40 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="header">
+            <h1>My Library</h1>
+            <button>Add a Book</button>
+            <form action="put">
+                <div class="input book-title">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="book_title">
+                </div>
+                <div class="input book-author">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="book_author">
+                </div>
+                <div class="input book-pages">
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" name="book_pages">
+                </div>
+                <div class="input book-read">
+                    <label for="read">Read?</label>
+                    <input type="checkbox" id="read" name="book_read">
+                </div>
+            </form>
+        </div>
+        <div class="content">
+            <div class="card">
+                <h1>Title</h1>
+                <ul>
+                    <li>Title</li>
+                    <li>Title</li>
+                    <li>Title</li>
+                </ul>
+                <button class="remove">Remove</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
