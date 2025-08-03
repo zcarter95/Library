@@ -19,7 +19,6 @@ function addBook() {
         addBookToLibrary(Object.fromEntries(formData).book_title, Object.fromEntries(formData).book_author, Object.fromEntries(formData).book_pages, Object.fromEntries(formData).book_read);
         updateLibrary();
     })
-
 }
 function bringUpInput() {
     let form = document.getElementsByClassName('new-book-form')[0];
@@ -31,9 +30,14 @@ function bringUpInput() {
 }
 function updateLibrary() {
     myLibrary.forEach((book) => {
+        card_id = document.getElementById(book.id);
+        if (card_id) {
+            return;
+        }
         let content = document.getElementsByClassName('content')[0];
         let card = document.createElement("div");
         card.className = 'card';
+        card.id = book.id;
         let cardContents = `
                 <h1>${book.name}</h1>
                 <ul>
