@@ -16,7 +16,14 @@ function ready() {
 }
 
 function removeBook(event) {
+    var newLibrary = []
     var buttonClicked = event.target;
+    myLibrary.forEach(book => {
+        if (book.id != buttonClicked.parentElement.id) {
+            newLibrary.push(book)
+        }
+    });
+    myLibrary = newLibrary;
     buttonClicked.parentElement.remove();
 }
 
@@ -63,7 +70,7 @@ function updateLibrary() {
         card.getElementsByClassName("remove")[0].addEventListener('click', removeBook);
     });
 }
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(id, name, author, pages, read) {
     this.id = id;
