@@ -11,8 +11,8 @@
     <div class="container">
         <div class="header">
             <h1>My Library</h1>
-            <button>Add a Book</button>
-            <form action="put">
+            <button class="add-book">Add a Book</button>
+            <!-- <form action="put" class="new-book">
                 <div class="input book-title">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="book_title">
@@ -27,9 +27,15 @@
                 </div>
                 <div class="input book-read">
                     <label for="read">Read?</label>
-                    <input type="checkbox" id="read" name="book_read">
+                    <select name="book_read" id="read">
+                        <optgroup>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </optgroup>
+                    </select>
                 </div>
-            </form>
+                <button type="submit">Add</button> -->
+            <!-- </form> -->
         </div>
         <div class="content">
             <div class="card">
