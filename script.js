@@ -10,8 +10,23 @@ function ready() {
     let button = removeBookButtons[i];
     button.addEventListener("click", removeBook);
   }
+  let readButtons = document.getElementsByClassName("read");
+  for (var i = 0; i < readButtons.length; i++) {
+    let button = readButtons[i];
+    button.addEventListener("click", updateRead);
+  }
   updateLibrary();
   addBook();
+}
+
+function updateReadClicked(event) {
+  var buttonClicked = event.target
+  var bookId = buttonClicked.parentElement.id;
+  var book = myLibrary.find(book => book.id == bookId);
+  book.updateRead();
+  let bookElement = document.getElementById(book.id);
+  let bookReadStatus = bookElement.querySelector('.read-status');
+  bookReadStatus.textContent = "Read: " + book.read;
 }
 
 function removeBook(event) {
@@ -68,7 +83,7 @@ function updateLibrary() {
                 <ul>
                     <li>Author: ${book.author}</li>
                     <li>Pages:${book.pages}</li>
-                    <li>Read:${book.read}</li>
+                    <li class="read-status">Read:${book.read}</li>
                 </ul>
                 <button class="read">Read</button>
                 <button class="remove">Remove</button>
@@ -78,6 +93,7 @@ function updateLibrary() {
     card
       .getElementsByClassName("remove")[0]
       .addEventListener("click", removeBook);
+    card.getElementsByClassName("read")[0].addEventListener("click", updateReadClicked);
   });
 }
 let myLibrary = [];
@@ -89,6 +105,15 @@ function Book(id, name, author, pages, read) {
   this.pages = pages;
   this.read = read;
 }
+
+Book.prototype.updateRead = function () {
+  if (this.read === true) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }
+  console.log(this.read)
+};
 
 function addBookToLibrary(name, author, pages, read) {
   id = crypto.randomUUID();
